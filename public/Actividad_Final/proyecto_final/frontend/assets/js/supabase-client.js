@@ -25,7 +25,7 @@ async function loginWithSupabase({ email, password }) {
         status: 200,
         data: {
             token: data.session.access_token,
-            user: {
+            usuario: {
                 id:     data.user.id,
                 email:  data.user.email,
                 nombre: profile?.nombre || data.user.email.split('@')[0],
@@ -229,6 +229,7 @@ const API = {
                 const periodo = new URL('http://x' + endpoint).searchParams.get('periodo') || 'semana';
                 return await fetchHabitStatsSupabase(periodo);
             }
+            if (endpoint.includes('/usuarios/read'))       return await fetchUsersSupabase();
             return { status: 200, data: {} };
         } catch { return { status: 500, data: { message: 'Error de red.' } }; }
     },

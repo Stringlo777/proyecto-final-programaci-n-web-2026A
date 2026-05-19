@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Logout — sin confirmación, la transición de página es feedback suficiente
-    document.getElementById('btnLogout').addEventListener('click', () => {
+    document.getElementById('btnLogout').addEventListener('click', async () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        if (typeof _supabase !== 'undefined') await _supabase.auth.signOut();
         navigateTo('index.html');
     });
 
