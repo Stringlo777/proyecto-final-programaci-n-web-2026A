@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes de Programación WEB</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            border: 2px solid #888;
+            background-color: #fff;
+        }
+
+        caption {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #000;
+        }
+
+        th,
+        td {
+            border: 1px solid #888;
+            padding: 15px;
+        }
+
+        thead th {
+            background-color: #cccccc;
+        }
+
+        tbody td:first-child {
+            background-color: #cccccc;
+            font-weight: bold;
+            width: 40px;
+        }
+
+        tfoot td {
+            background-color: #cccccc;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4B0082;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .img-box {
+            background-color: #d0d0d0;
+            color: #888;
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Estudiantes de Programación WEB (CUCEA)</h1>
+        <p><a href="/index.html">Portada</a></p>
+        <hr>
+    </header>
+    <main>
+        <table>
+            <caption>Estudiantes de Programación WEB (CUCEA)</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th style="width: 80px;">Imagen</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Carrera</th>
+                    <th>Promedio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <div class="img-box">50 x 50</div>
+                    </td>
+                    <td><a href="node_juan.html">Juan Pérez</a></td>
+                    <td>20</td>
+                    <td>Ingeniería en Telemática</td>
+                    <td>85</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <div class="img-box">50 x 50</div>
+                    </td>
+                    <td><a href="node_maria.html">María García</a></td>
+                    <td>22</td>
+                    <td>Ingeniería en Informática</td>
+                    <td>79</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>
+                        <div class="img-box">50 x 50</div>
+                    </td>
+                    <td><a href="node_carlos.html">Carlos López</a></td>
+                    <td>21</td>
+                    <td>Licenciatura en Tecnologías de la Información</td>
+                    <td>82</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>
+                        <div class="img-box">50 x 50</div>
+                    </td>
+                    <td><a href="node_ana.html">Ana Martínez</a></td>
+                    <td>19</td>
+                    <td>Ingeniería en Mecatrónica</td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>
+                        <div class="img-box">50 x 50</div>
+                    </td>
+                    <td><a href="node_adriana.html">Adriana Ramos</a></td>
+                    <td>22</td>
+                    <td>Ingeniería en Computación</td>
+                    <td>98</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">Ciclo escolar 2024A</td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+</body>
+
+</html>

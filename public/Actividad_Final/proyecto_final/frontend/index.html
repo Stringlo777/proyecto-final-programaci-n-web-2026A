@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HabitTracker - Panel de Autocuidado y Productividad con diseño Frutiger Aero">
+    <title>HabitTracker - Inicio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <!-- Page transition overlay -->
+    <div id="page-transition"></div>
+
+    <!-- Burbujas decorativas simuladas (Frutiger Aero details) -->
+    <div class="bubble" style="width: 100px; height: 100px; top: 15%; left: 20%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 180px; height: 180px; top: 65%; left: 10%; animation-delay: 2.5s;"></div>
+    <div class="bubble" style="width: 70px; height: 70px; top: 25%; right: 25%; animation-delay: 1.2s;"></div>
+    <div class="bubble" style="width: 130px; height: 130px; bottom: 5%; right: 15%; animation-delay: 3s;"></div>
+
+    <!-- Panel de Iniciar Sesión -->
+    <div class="glass-container" id="login-form-container">
+        <div class="auth-header">
+            <h2>HabitTracker</h2>
+            <p>Construye tu mejor versión</p>
+        </div>
+        
+        <div class="alert alert-glass py-2 text-center" id="login-alert"></div>
+
+        <form id="loginForm">
+            <div class="mb-3 position-relative z-1">
+                <input type="email" class="form-control" id="loginEmail" placeholder="Correo electrónico" required>
+            </div>
+            <div class="mb-4 position-relative z-1">
+                <div class="input-group">
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Contraseña" required style="border-radius: 14px 0 0 14px;">
+                    <button class="btn toggle-pwd" type="button" data-target="loginPassword" title="Mostrar/ocultar">👁</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-aero w-100">Iniciar Sesión</button>
+            <div class="auth-switch">
+                <span>¿No tienes una cuenta? <br> <a href="#" id="showRegister">Regístrate ahora</a></span>
+            </div>
+        </form>
+    </div>
+
+    <!-- Panel de Registro -->
+    <div class="glass-container" id="register-form-container" style="display: none;">
+        <div class="auth-header">
+            <h2>Únete Hoy</h2>
+            <p>Empieza a ganar constancia</p>
+        </div>
+        
+        <div class="alert alert-glass py-2 text-center" id="register-alert"></div>
+
+        <form id="registerForm">
+            <div class="mb-3 position-relative z-1">
+                <input type="text" class="form-control" id="regNombre" placeholder="Tu Nombre Completo" required>
+            </div>
+            <div class="mb-3 position-relative z-1">
+                <input type="email" class="form-control" id="regEmail" placeholder="Correo electrónico" required>
+            </div>
+            <div class="mb-4 position-relative z-1">
+                <div class="input-group">
+                    <input type="password" class="form-control" id="regPassword" placeholder="Crea una contraseña" required style="border-radius: 14px 0 0 14px;">
+                    <button class="btn toggle-pwd" type="button" data-target="regPassword" title="Mostrar/ocultar">👁</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-aero w-100">Crear Cuenta</button>
+            <div class="auth-switch">
+                <span>¿Ya tienes cuenta? <br> <a href="#" id="showLogin">Entra aquí</a></span>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-client.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        document.querySelectorAll('.toggle-pwd').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = document.getElementById(btn.dataset.target);
+                const showing = input.type === 'text';
+                input.type = showing ? 'password' : 'text';
+                btn.textContent = showing ? '👁' : '🙈';
+            });
+        });
+    </script>
+</body>
+</html>

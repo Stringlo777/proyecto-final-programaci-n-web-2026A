@@ -1,0 +1,693 @@
+/* ================================================================
+   HabitTracker — Frutiger Aero 2009 Design System
+   ================================================================ */
+
+:root {
+    --fa-blue: #0077b6;
+    --fa-light-blue: #00b4d8;
+    --fa-cyan: #90e0ef;
+    --fa-green: #38b000;
+    --fa-light-green: #70e000;
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 119, 182, 0.2);
+}
+
+/* ── Aurora Background ──────────────────────────────────────────── */
+@keyframes auroraShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(-45deg,
+        #0a2744, #083d6e, #0077b6,
+        #00a8cc, #005f8f, #003d2e,
+        #007a52, #0062a3
+    );
+    background-size: 400% 400%;
+    animation: auroraShift 20s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Caustic depth layer */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 20% 20%, rgba(144,224,239,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(112,224,0,0.10) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 50% 95%, rgba(0,119,182,0.18) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+    animation: causticPulse 14s ease-in-out infinite alternate;
+}
+
+@keyframes causticPulse {
+    0%   { opacity: 0.65; }
+    100% { opacity: 1; }
+}
+
+/* ── Custom Scrollbar (Vista/Aero) ─────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track {
+    background: rgba(0,30,60,0.3);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #90e0ef 0%, #0077b6 100%);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #c8f4ff 0%, #00b4d8 100%);
+}
+
+/* ── Bubble Particles (Frutiger Aero signature) ─────────────────── */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,0.95) 0%,
+        rgba(200,245,255,0.65) 22%,
+        rgba(0,180,216,0.22) 58%,
+        rgba(0,80,160,0.05) 100%
+    );
+    box-shadow:
+        inset 0 -5px 14px rgba(0,180,216,0.28),
+        inset 5px 0 10px rgba(255,255,255,0.38),
+        0 10px 28px rgba(0,80,160,0.18),
+        0 0 50px rgba(0,180,216,0.08);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bubble:nth-child(1) { animation: floatBubble1 10s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.bubble:nth-child(2) { animation: floatBubble2 13s cubic-bezier(0.40,0.00,0.60,1.00) infinite; }
+.bubble:nth-child(3) { animation: floatBubble3  8s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.bubble:nth-child(4) { animation: floatBubble1 15s cubic-bezier(0.40,0.00,0.60,1.00) infinite; }
+.bubble:nth-child(5) { animation: floatBubble2 11s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+
+@keyframes floatBubble1 {
+    0%   { transform: translateY(0)    translateX(0)    scale(1);    }
+    33%  { transform: translateY(-28px) translateX(9px)  scale(1.05); }
+    66%  { transform: translateY(-14px) translateX(-7px) scale(0.97); }
+    100% { transform: translateY(0)    translateX(0)    scale(1);    }
+}
+@keyframes floatBubble2 {
+    0%   { transform: translateY(0)    rotate(0deg)   scale(1);    }
+    40%  { transform: translateY(-38px) rotate(9deg)   scale(1.07); }
+    70%  { transform: translateY(-20px) rotate(-5deg)  scale(0.96); }
+    100% { transform: translateY(0)    rotate(0deg)   scale(1);    }
+}
+@keyframes floatBubble3 {
+    0%   { transform: translateY(0)    scale(1);    }
+    50%  { transform: translateY(-22px) scale(1.09); }
+    100% { transform: translateY(0)    scale(1);    }
+}
+
+/* ── Glass Container ────────────────────────────────────────────── */
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    border-top: 2px solid rgba(255,255,255,0.88);
+    border-left: 2px solid rgba(255,255,255,0.72);
+    box-shadow:
+        var(--glass-shadow),
+        inset 0 1px 0 rgba(255,255,255,0.6),
+        0 0 70px rgba(0,180,216,0.07);
+    padding: 3rem 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    z-index: 10;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Plastic/glass highlight */
+.glass-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 46%;
+    background: linear-gradient(to bottom,
+        rgba(255,255,255,0.30) 0%,
+        rgba(255,255,255,0.08) 60%,
+        rgba(255,255,255,0)   100%
+    );
+    border-radius: 24px 24px 0 0;
+    pointer-events: none;
+}
+
+/* ── Auth Header ────────────────────────────────────────────────── */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.auth-header h2 {
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+    font-size: 2.4rem;
+    letter-spacing: -1px;
+    animation: titlePulse 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes titlePulse {
+    0%   { text-shadow: 0 2px 8px rgba(0,119,182,0.65), 0 0 30px rgba(144,224,239,0.4); }
+    100% { text-shadow: 0 2px 14px rgba(0,180,216,0.9), 0 0 55px rgba(144,224,239,0.75), 0 0 90px rgba(0,180,216,0.3); }
+}
+
+.auth-header p {
+    color: rgba(255,255,255,0.95);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ── Title Glow utility ─────────────────────────────────────────── */
+.title-glow {
+    text-shadow:
+        0 2px 5px rgba(0,0,0,0.4),
+        0 0 25px rgba(144,224,239,0.35),
+        0 0 50px rgba(0,180,216,0.18) !important;
+}
+
+/* ── Form Controls ──────────────────────────────────────────────── */
+.form-control {
+    background: rgba(255,255,255,0.38);
+    border: 1px solid rgba(255,255,255,0.65);
+    border-radius: 14px;
+    padding: 0.9rem 1.2rem;
+    color: #0077b6;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow:
+        inset 0 2px 5px rgba(0,0,0,0.06),
+        inset 0 -1px 0 rgba(255,255,255,0.5);
+}
+
+.form-control:focus {
+    background: rgba(255,255,255,0.82);
+    border-color: #90e0ef;
+    box-shadow:
+        0 0 0 3px rgba(144,224,239,0.35),
+        inset 0 2px 5px rgba(0,0,0,0.04),
+        0 0 22px rgba(0,180,216,0.18);
+    color: #0077b6;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: rgba(0,119,182,0.55);
+    font-weight: 400;
+}
+
+/* ── Button: Aero Primary ───────────────────────────────────────── */
+.btn-aero {
+    background: linear-gradient(180deg, #b8f0ff 0%, #00b4d8 45%, #0077b6 100%);
+    border: 1px solid rgba(255,255,255,0.88);
+    border-bottom: 1px solid rgba(0,80,150,0.5);
+    border-radius: 20px;
+    color: white;
+    font-weight: 800;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow:
+        inset 0 2px 8px rgba(255,255,255,0.92),
+        inset 0 -2px 4px rgba(0,80,160,0.35),
+        0 5px 22px rgba(0,150,199,0.5);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Sweep shine on hover */
+.btn-aero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+.btn-aero:hover::before { left: 130%; }
+
+.btn-aero:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        inset 0 2px 8px rgba(255,255,255,0.96),
+        inset 0 -2px 4px rgba(0,80,160,0.2),
+        0 8px 30px rgba(0,180,216,0.72);
+    color: white;
+    background: linear-gradient(180deg, #d4f8ff 0%, #00ccee 50%, #0090c8 100%);
+}
+
+.btn-aero:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.16);
+}
+
+/* ── Button: Success Aero ───────────────────────────────────────── */
+.btn-success-aero {
+    background: linear-gradient(180deg, #aaff40 0%, #70e000 45%, #38b000 100%) !important;
+    color: white !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+    box-shadow:
+        0 5px 22px rgba(56,176,0,0.55),
+        inset 0 2px 8px rgba(255,255,255,0.92),
+        inset 0 -2px 4px rgba(0,100,0,0.2) !important;
+    border: 1px solid rgba(255,255,255,0.9) !important;
+    border-bottom: 1px solid rgba(0,120,0,0.35) !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.btn-success-aero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+.btn-success-aero:hover::before { left: 130%; }
+
+.btn-success-aero:hover {
+    background: linear-gradient(180deg, #c0ff60 0%, #88f000 45%, #48c800 100%) !important;
+    transform: scale(1.02);
+    box-shadow:
+        0 7px 26px rgba(56,176,0,0.72),
+        inset 0 2px 8px rgba(255,255,255,0.96) !important;
+}
+
+/* ── Password Toggle ────────────────────────────────────────────── */
+.toggle-pwd {
+    background: rgba(255,255,255,0.38);
+    border: 1px solid rgba(255,255,255,0.65);
+    border-left: none;
+    border-radius: 0 14px 14px 0;
+    color: rgba(0,119,182,0.8);
+    font-size: 1rem;
+    padding: 0 0.8rem;
+    transition: background 0.2s ease;
+    position: relative;
+    z-index: 2;
+}
+.toggle-pwd:hover { background: rgba(255,255,255,0.65); }
+
+/* ── Auth Switch ────────────────────────────────────────────────── */
+.auth-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.auth-switch a {
+    color: #ccff33;
+    font-weight: 800;
+    text-decoration: none;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.auth-switch a:hover {
+    color: #fff;
+    text-shadow: 0 0 14px rgba(200,255,50,0.85);
+    text-decoration: underline;
+}
+
+/* ── Alert Glass ────────────────────────────────────────────────── */
+.alert-glass {
+    background: rgba(255,0,0,0.5);
+    color: white;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    display: none;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    margin-bottom: 1rem;
+}
+
+/* ── Widget Chrome (macOS Aqua-inspired) ────────────────────────── */
+.widget-chrome {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+.widget-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow:
+        inset 0 1px 3px rgba(255,255,255,0.65),
+        0 1px 4px rgba(0,0,0,0.35);
+}
+
+.widget-dot-red    { background: radial-gradient(circle at 35% 30%, #ff9090, #cc0000); }
+.widget-dot-yellow { background: radial-gradient(circle at 35% 30%, #ffe070, #cc9000); }
+.widget-dot-green  { background: radial-gradient(circle at 35% 30%, #90ff90, #007a00); }
+
+/* ── Gel Progress Bar (Windows Vista style) ─────────────────────── */
+.progress-gel-track {
+    background: rgba(0,0,0,0.28);
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+    box-shadow:
+        inset 0 1px 4px rgba(0,0,0,0.45),
+        inset 0 -1px 0 rgba(255,255,255,0.08);
+    position: relative;
+}
+
+.progress-gel {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #70e000 0%, #00e4cc 60%, #00b4d8 100%);
+    position: relative;
+    transition: width 0.8s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 0 10px rgba(0,220,180,0.65);
+}
+
+.progress-gel::after {
+    content: '';
+    position: absolute;
+    top: 1px; left: 4px; right: 4px;
+    height: 3px;
+    background: rgba(255,255,255,0.72);
+    border-radius: 10px;
+}
+
+/* ── Card Entrance Animation ────────────────────────────────────── */
+@keyframes cardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(32px) scale(0.93);
+        filter: blur(5px);
+    }
+    60% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    82% {
+        transform: translateY(-5px) scale(1.015);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.card-enter {
+    animation: cardEntrance 0.58s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+/* ── Score Orb (gold sphere) ────────────────────────────────────── */
+#scoreDisplay {
+    background:
+        radial-gradient(circle at 33% 28%, #fff7a0 0%, #ffe566 22%, #ffb700 52%, #c87000 100%) !important;
+    color: #3a2000 !important;
+    border: 1px solid rgba(255,255,255,0.92) !important;
+    box-shadow:
+        inset 0 2px 5px rgba(255,255,255,0.82),
+        inset 0 -2px 4px rgba(160,80,0,0.3),
+        0 4px 18px rgba(255,183,0,0.68) !important;
+    text-shadow: none !important;
+    font-weight: 800 !important;
+}
+
+/* ── FAB Orb breathing ──────────────────────────────────────────── */
+.btn-floating {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 300;
+    z-index: 1000;
+    padding: 0;
+    line-height: 1;
+    /* Solo transiciona transform; box-shadow lo maneja la animación */
+    transition: transform 0.22s ease;
+    animation: orbBreathe 3.2s ease-in-out infinite;
+}
+
+@keyframes orbBreathe {
+    0%   { box-shadow: inset 0 2px 6px rgba(255,255,255,0.8),  0 8px 30px rgba(0,119,182,0.55); }
+    50%  { box-shadow: inset 0 2px 6px rgba(255,255,255,0.92), 0 8px 48px rgba(0,180,216,0.88), 0 0 22px rgba(144,224,239,0.42); }
+    100% { box-shadow: inset 0 2px 6px rgba(255,255,255,0.8),  0 8px 30px rgba(0,119,182,0.55); }
+}
+
+/* Solo escala/rota — la animación de glow sigue corriendo sin reiniciarse */
+.btn-floating:hover {
+    transform: scale(1.13) rotate(90deg);
+}
+
+/* ── Prismatic Navbar (shimmer line) ────────────────────────────── */
+.navbar-glass {
+    position: relative;
+}
+
+.navbar-glass::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(144,224,239,0),
+        rgba(0,180,216,0.9),
+        rgba(112,224,0,0.65),
+        rgba(255,230,100,0.5),
+        rgba(0,180,216,0.9),
+        rgba(144,224,239,0)
+    );
+    background-size: 200% 100%;
+    animation: prismShift 5s linear infinite;
+}
+
+@keyframes prismShift {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ── Glossy Admin/User Badges ───────────────────────────────────── */
+.badge-admin {
+    background: linear-gradient(135deg, #ff006e, #c9004f);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.55), 0 3px 10px rgba(255,0,110,0.5);
+    position: relative;
+    overflow: hidden;
+}
+.badge-user {
+    background: linear-gradient(135deg, #3a86ff, #1a66df);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.55), 0 3px 10px rgba(58,134,255,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-admin::after,
+.badge-user::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 55%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.38), rgba(255,255,255,0));
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* ── Aqua Spinner ───────────────────────────────────────────────── */
+.aqua-spinner {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: conic-gradient(
+        rgba(0,180,216,0)   0deg,
+        rgba(0,180,216,0.3) 90deg,
+        rgba(0,180,216,0.7) 180deg,
+        rgba(144,224,239,1) 270deg,
+        rgba(255,255,255,1) 360deg
+    );
+    animation: spinAqua 0.75s linear infinite;
+    position: relative;
+    display: inline-block;
+}
+
+.aqua-spinner::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 33%, rgba(200,248,255,0.55), rgba(0,100,150,0.5));
+}
+
+@keyframes spinAqua {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Vista Toast Notifications ──────────────────────────────────── */
+#toast-container {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.aero-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 24px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.5),
+        0 8px 32px rgba(0,0,0,0.28),
+        0 0 0 1px rgba(255,255,255,0.12);
+    animation: toastSlideUp 0.42s cubic-bezier(0.34,1.56,0.64,1) both;
+    pointer-events: auto;
+    min-width: 230px;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.aero-toast.toast-success {
+    background: linear-gradient(135deg, rgba(56,176,0,0.88), rgba(0,110,40,0.78));
+}
+.aero-toast.toast-danger {
+    background: linear-gradient(135deg, rgba(200,0,0,0.88), rgba(140,0,0,0.78));
+}
+.aero-toast.toast-info {
+    background: linear-gradient(135deg, rgba(0,150,210,0.88), rgba(0,70,160,0.78));
+}
+
+.toast-orb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.72), 0 2px 6px rgba(0,0,0,0.22);
+}
+.aero-toast.toast-success .toast-orb { background: radial-gradient(circle at 35% 30%, #aaff66, #38b000); }
+.aero-toast.toast-danger  .toast-orb { background: radial-gradient(circle at 35% 30%, #ff8888, #cc0000); }
+.aero-toast.toast-info    .toast-orb { background: radial-gradient(circle at 35% 30%, #80e8ff, #0077b6); }
+
+@keyframes toastSlideUp {
+    from { opacity: 0; transform: translateY(22px) scale(0.88); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+@keyframes toastFadeOut {
+    from { opacity: 1; transform: scale(1);    }
+    to   { opacity: 0; transform: scale(0.82); }
+}
+
+/* ── Page Transition Overlay ────────────────────────────────────── */
+#page-transition {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center,
+        rgba(0,180,216,0.45) 0%,
+        rgba(0,30,80,0.96) 100%
+    );
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.38s ease;
+}
+#page-transition.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ── Search empty state ─────────────────────────────────────────── */
+#search-empty {
+    display: none;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    padding: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ── Modal Glassmorphism ────────────────────────────────────────── */
+.custom-modal .modal-content {
+    background: rgba(228, 248, 255, 0.88);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.95);
+    box-shadow: 0 12px 50px rgba(0,119,182,0.45);
+}
+.custom-modal .modal-header {
+    border-bottom: 1px solid rgba(0,180,216,0.2);
+}
+.custom-modal .form-control,
+.custom-modal .form-select {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(0,180,216,0.5);
+    border-radius: 12px;
+    color: #0077b6;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.custom-modal .form-control:focus,
+.custom-modal .form-select:focus {
+    box-shadow: 0 0 0 3px rgba(0,180,216,0.25);
+    border-color: #00b4d8;
+    background: rgba(255,255,255,0.95);
+}
+.custom-modal .form-label { color: #005f8f; font-weight: 700; }

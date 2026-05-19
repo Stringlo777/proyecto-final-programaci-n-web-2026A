@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos López - Información</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            border: 2px solid #888;
+            background-color: #fff;
+        }
+
+        caption {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #000;
+        }
+
+        th,
+        td {
+            border: 1px solid #888;
+            padding: 15px;
+        }
+
+        thead th,
+        .bg-grey {
+            background-color: #cccccc;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .bg-light {
+            background-color: #f2f2f2;
+        }
+
+        .img-box {
+            background-color: #cccccc;
+            color: #888;
+            width: 300px;
+            height: 300px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 28px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4B0082;
+            font-size: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <table>
+            <caption>Estudiantes de Programación WEB (CUCEA)</caption>
+            <thead>
+                <tr>
+                    <th colspan="5">Licenciatura en Tecnologías de la Información</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="4" style="width: 320px; padding: 10px;">
+                        <div class="img-box">300 x 300</div>
+                    </td>
+                    <td colspan="4" style="padding: 20px; font-size: 20px;">Carlos López</td>
+                </tr>
+                <tr>
+                    <td><b>Código:</b> 219500003</td>
+                    <td><b>Estatus:</b> ACTIVO</td>
+                    <td><b>Ingreso:</b> 2021-A</td>
+                    <td><b>Edad:</b> 21</td>
+                </tr>
+                <tr>
+                    <td><b>Tel:</b> 33 66 77 88 99</td>
+                    <td colspan="3"><b>Correo:</b><br>carlos.lopez@cucei.udg.mx</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Promedio general:</b> 82</td>
+                    <td colspan="2"><b>Total de Créditos:</b> 225</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="bg-grey" style="font-weight: normal;">Ciclo escolar 2024A</td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="bg-light" style="padding: 5px;">
+                        <nav>
+                            <a href="index.html" title="Regresar al inicio">🏠</a>
+                        </nav>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+</body>
+
+</html>

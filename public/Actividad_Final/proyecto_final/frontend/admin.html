@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabitTracker - Panel Admin</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body { display: block; padding-top: 80px; padding-bottom: 50px; }
+
+        .table-glass {
+            color: white;
+            border-collapse: separate;
+            border-spacing: 0 4px;
+            width: 100%;
+        }
+        .table-glass thead tr {
+            background: rgba(0, 119, 182, 0.2);
+        }
+        .table-glass th {
+            border-bottom: 2px solid rgba(255,255,255,0.35);
+            padding: 14px 16px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            color: rgba(255,255,255,0.9);
+        }
+        .table-glass td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            transition: background 0.2s ease;
+        }
+        .table-glass tr:hover td { background: rgba(255,255,255,0.12); }
+
+        #alert-container { position: sticky; top: 80px; z-index: 1000; }
+
+        .btn-expulsar {
+            background: linear-gradient(180deg, #ff4d6d 0%, #c9002a 100%);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: inset 0 1px 4px rgba(255,255,255,0.5), 0 3px 10px rgba(200,0,42,0.4);
+            color: white;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        .btn-expulsar:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 4px rgba(255,255,255,0.6), 0 5px 15px rgba(200,0,42,0.6);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page transition overlay -->
+    <div id="page-transition"></div>
+    <!-- Toast notifications -->
+    <div id="toast-container"></div>
+
+    <div class="bubble" style="width: 250px; height: 250px; top: -5%; right: -5%; animation-delay: 0s;"></div>
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-glass" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(255,255,255,0.4);">
+        <div class="container">
+            <span class="navbar-brand text-white fw-bold" onclick="navigateTo('dashboard.html')" style="text-shadow: 0 2px 5px rgba(0,0,0,0.4); cursor:pointer;">🛡️ Centro de Mando (Admin)</span>
+            <div class="d-flex align-items-center">
+                <button onclick="navigateTo('dashboard.html')" class="btn btn-sm text-white border-white rounded-pill fw-bold me-3" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(5px);">← Dashboard</button>
+                <button class="btn btn-sm rounded-pill fw-bold btn-expulsar" id="btnLogout">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container position-relative z-1">
+        <div id="alert-container"></div>
+        
+        <div class="glass-container w-100 p-5 mt-4" style="max-width: 100%;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <div class="widget-chrome">
+                        <span class="widget-dot widget-dot-red"></span>
+                        <span class="widget-dot widget-dot-yellow"></span>
+                        <span class="widget-dot widget-dot-green"></span>
+                    </div>
+                    <h3 class="text-white fw-bold m-0 title-glow" style="font-size: 2.2rem;">Directorio Global del Sistema</h3>
+                    <p class="text-white opacity-75 mt-1 mb-0">Control total de usuarios registrados y auditoría de puntos.</p>
+                </div>
+                <span class="badge bg-light text-dark fs-5 rounded-pill shadow" id="totalUsers">0 Usuarios</span>
+            </div>
+            <div class="mb-4">
+                <input type="search" id="searchUsers" class="form-control" placeholder="🔍  Buscar por nombre o correo...">
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table-glass">
+                    <thead>
+                        <tr>
+                            <th># ID</th>
+                            <th>Nombre</th>
+                            <th>Correo Electrónico</th>
+                            <th>Score (Gamificación)</th>
+                            <th>Nivel de Acceso</th>
+                            <th>Integración</th>
+                            <th>Acciones Críticas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersList">
+                        <tr><td colspan="7" class="text-center py-4"><div class="aqua-spinner mx-auto"></div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="assets/js/supabase-client.js"></script>
+    <script defer src="assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: #fcfcfc;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.tabla,
+.filas-bajas {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    gap: 4px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.filas-bajas {
+    margin-top: 20px;
+}
+
+a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
+    height: 70px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+a:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    position: relative;
+}
+
+a small {
+    align-self: flex-start;
+    padding-left: 6px;
+    padding-top: 4px;
+    font-size: 10px;
+    margin-bottom: auto;
+    color: inherit;
+    opacity: 0.8;
+}
+
+a strong {
+    font-size: 20px;
+    margin-bottom: auto;
+}
+
+a span {
+    font-size: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 95%;
+    margin-bottom: 4px;
+}
+
+/* Categorías */
+.al {
+    background-color: #da283c;
+    color: white;
+}
+
+.at {
+    background-color: #f29a28;
+    color: black;
+}
+
+.tr {
+    background-color: #9cbbe0;
+    color: black;
+}
+
+.po {
+    background-color: #c6a5cf;
+    color: black;
+}
+
+.me {
+    background-color: #ffcd1d;
+    color: black;
+}
+
+.no {
+    background-color: #9ecf80;
+    color: black;
+}
+
+.gn {
+    background-color: #f6a6c4;
+    color: black;
+}
+
+.la {
+    background-color: #198fdb;
+    color: white;
+}
+
+.ac {
+    background-color: #6ae1a7;
+    color: black;
+}
+
+.de {
+    background-color: #d1d1d1;
+    color: black;
+}
+
+/* Leyenda */
+.leyenda {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 60px auto;
+    text-align: left;
+}
+
+.leyenda div {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+.leyenda span {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}

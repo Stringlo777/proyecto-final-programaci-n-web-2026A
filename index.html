@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Web</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f6f9;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #8E44AD, #55A8E8);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8E44AD, #55A8E8);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+        }
+
+        header h1 {
+            font-weight: 700;
+        }
+
+        .card-hover {
+            transition: 0.3s;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Portafolio Web</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Programación Web 2026A</h1>
+        <p>By: Maximiliano Guerrero Stringlo</p>
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Ejercicios desarrollados</h2>
+            <p class="text-muted">HTML - HyperText Markup Language</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Card -->
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 04</h5>
+                        <a href="index.html" class="btn btn-primary">Ver proyecto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 05</h5>
+                        <a href="/public/Act05/home.html" class="btn btn-primary">Ver proyecto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 06</h5>
+                        <a href="/public/Act06/home.html" class="btn btn-primary">Ver proyecto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 07</h5>
+                        <a href="/public/Act07/home.html" class="btn btn-primary">Ver proyecto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 09</h5>
+                        <a href="/public/Act09/elementos.html" class="btn btn-primary">Ver proyecto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 10</h5>
+                        <a href="/public/Act10/home.html" class="btn btn-primary">Ver proyecto</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destacados -->
+            <div class="col-md-4">
+                <div class="card border-info card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 11 - Ejercicio 1</h5>
+                        <a href="/public/Act11/Ex1.html" class="btn btn-info text-white">Ver</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-info card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 11 - Ejercicio 2</h5>
+                        <a href="/public/Act11/Ex2.html" class="btn btn-info text-white">Ver</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-info card-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Actividad 11 - Ejercicio 3</h5>
+                        <a href="/public/Act11/Ex3.html" class="btn btn-info text-white">Ver</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ── Proyecto Final ───────────────────────────────────────── -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <hr class="mb-4">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Proyecto Final</h2>
+                    <p class="text-muted">Aplicación Full-Stack · PHP · MySQL · JavaScript · Supabase · Vercel · GitHub</p>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card card-hover border-0 shadow-lg"
+                     style="background: linear-gradient(135deg, #0077b6 0%, #00b4d8 60%, #48cae4 100%);
+                            color: white; border-radius: 20px; overflow: hidden;">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-8">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <span style="font-size:2.8rem;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3));">💧</span>
+                                    <div>
+                                        <h3 class="fw-bold mb-0" style="color:white;font-size:1.8rem;text-shadow:0 2px 8px rgba(0,0,0,0.2);">HabitTracker</h3>
+                                        <p class="mb-0" style="opacity:.8;font-size:.9rem;">Plataforma de hábitos con gamificación &amp; Frutiger Aero</p>
+                                    </div>
+                                </div>
+                                <p style="opacity:.9;line-height:1.75;font-size:.95rem;">
+                                    Aplicación web full-stack para el seguimiento de hábitos personales con sistema de gamificación,
+                                    autenticación JWT, panel de administración, análisis estadístico por período,
+                                    frases motivacionales diarias y diseño Glassmorphism / Frutiger Aero 2009.
+                                </p>
+                                <div class="d-flex flex-wrap gap-2 mt-3">
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:rgba(255,255,255,0.22);font-size:.78rem;">PHP 8</span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:rgba(255,255,255,0.22);font-size:.78rem;">MySQL / Supabase</span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:rgba(255,255,255,0.22);font-size:.78rem;">Vanilla JS</span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:rgba(255,255,255,0.22);font-size:.78rem;">Bootstrap 5</span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:rgba(255,255,255,0.22);font-size:.78rem;">Chart.js</span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:rgba(255,255,255,0.22);font-size:.78rem;">JWT Auth</span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:rgba(255,255,255,0.22);font-size:.78rem;">Vercel</span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:rgba(255,255,255,0.22);font-size:.78rem;">REST API</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="d-flex flex-column gap-3">
+                                    <a href="https://github.com/Stringlo777/proyecto-final-programaci-n-web-2026A"
+                                       target="_blank" rel="noopener"
+                                       class="btn btn-light fw-bold rounded-pill px-4 py-2 shadow-sm"
+                                       style="color:#0077b6;font-size:.95rem;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="me-2 mb-1" viewBox="0 0 16 16">
+                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                                        </svg>
+                                        Repositorio GitHub
+                                    </a>
+                                    <a href="/public/Actividad_Final/proyecto_final/frontend/index.html"
+                                       class="btn fw-bold rounded-pill px-4 py-2"
+                                       style="background:rgba(255,255,255,0.18);color:white;border:2px solid rgba(255,255,255,0.6);font-size:.95rem;">
+                                        🚀 Ver Demo Local
+                                    </a>
+                                </div>
+                                <p class="mt-3 mb-0" style="font-size:.75rem;opacity:.65;">
+                                    admin@habitos.com / admin123
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 - Portafolio de Programación Web</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
