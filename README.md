@@ -46,7 +46,8 @@ erDiagram
 | Correo | Contraseña | Rol |
 |--------|-----------|-----|
 | jefe@habittracker.com | Jefe2026! | admin |
+| admin@admin.com | Admin2026! | admin |
 | demo@habittracker.com | Demo2026! | user |
 | carlos@demo.com | Carlos2026! | user |
 | sofia@demo.com | Sofia2026! | user |
-| pedro@demo.com | Pedro2026! | user |
+| maria@demo.com | Maria2026! | user |
