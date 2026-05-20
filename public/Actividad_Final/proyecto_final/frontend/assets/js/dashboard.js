@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostrar si localStorage ya tiene rol admin
     if (user.rol === 'admin') insertAdminBtn();
 
-    // Siempre verificar rol real en DB (detecta cambios post-login)
+    // Siempre verificar rol real en DB via RPC (bypasea RLS)
     if (typeof _supabase !== 'undefined') {
-        _supabase.from('usuarios').select('rol').eq('id', user.id).single()
-            .then(({ data: p }) => {
-                if (!p) return;
-                if (p.rol !== user.rol) {
-                    user.rol = p.rol;
-                    localStorage.setItem('user', JSON.stringify(user));
-                }
-                if (p.rol === 'admin') insertAdminBtn();
-            });
+        _supabase.rpc('get_my_profile').then(({ data: arr }) => {
+            const p = arr?.[0];
+            if (!p) return;
+            if (p.rol !== user.rol) {
+                user.rol = p.rol;
+                localStorage.setItem('user', JSON.stringify(user));
+            }
+            if (p.rol === 'admin') insertAdminBtn();
+        });
     }
 
     // Logout — sin confirmación, la transición de página es feedback suficiente

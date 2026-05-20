@@ -18,8 +18,8 @@ async function loginWithSupabase({ email, password }) {
     const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
     if (error) return { status: 401, data: { message: 'Correo o contraseña incorrectos.' } };
 
-    const { data: profile } = await _supabase
-        .from('usuarios').select('nombre, rol, puntos').eq('id', data.user.id).single();
+    const { data: profileArr } = await _supabase.rpc('get_my_profile');
+    const profile = profileArr?.[0];
 
     return {
         status: 200,
@@ -65,8 +65,8 @@ async function fetchHabitsSupabase() {
         .from('habitos').select('*').eq('activo', true).order('id', { ascending: false });
     if (error) return { status: 500, data: { message: error.message } };
 
-    const { data: profile } = await _supabase
-        .from('usuarios').select('puntos').eq('id', user.id).single();
+    const { data: profileArr } = await _supabase.rpc('get_my_profile');
+    const profile = profileArr?.[0];
 
     if (!habitos || habitos.length === 0)
         return { status: 200, data: { habitos: [], puntos: profile?.puntos || 0 } };
@@ -152,8 +152,8 @@ async function toggleRegistroSupabase({ habito_id }) {
     }
 
     const delta = nuevoEstado ? 10 : -10;
-    const { data: profile } = await _supabase.from('usuarios').select('puntos').eq('id', user.id).single();
-    const newPoints = Math.max(0, (profile?.puntos || 0) + delta);
+    const { data: profileArr } = await _supabase.rpc('get_my_profile');
+    const newPoints = Math.max(0, (profileArr?.[0]?.puntos || 0) + delta);
     await _supabase.from('usuarios').update({ puntos: newPoints }).eq('id', user.id);
 
     return {
