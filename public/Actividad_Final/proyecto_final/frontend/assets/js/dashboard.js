@@ -12,14 +12,31 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('userNameDisplay').textContent = `Hola, ${user.nombre.split(' ')[0]} ✨`;
 
     // Admin button injection
-    if (user.rol === 'admin') {
-        const adminBtn = document.createElement('a');
-        adminBtn.href = 'admin.html';
+    function insertAdminBtn() {
+        if (document.getElementById('adminNavBtn')) return;
+        const adminBtn = document.createElement('button');
+        adminBtn.id = 'adminNavBtn';
         adminBtn.className = 'btn btn-sm rounded-pill fw-bold me-3';
-        adminBtn.style.cssText = 'background:rgba(255,0,110,0.28);color:#fff;border:1px solid rgba(255,100,150,0.55);backdrop-filter:blur(5px);';
-        adminBtn.textContent = '🛡️ Panel Admin';
-        adminBtn.addEventListener('click', e => { e.preventDefault(); navigateTo('admin.html'); });
+        adminBtn.style.cssText = 'background:linear-gradient(135deg,rgba(255,0,110,0.5),rgba(200,0,80,0.4));color:#fff;border:1px solid rgba(255,100,150,0.7);backdrop-filter:blur(5px);';
+        adminBtn.textContent = '🛡️ Mi Panel';
+        adminBtn.addEventListener('click', () => navigateTo('admin.html'));
         document.getElementById('btnLogout').before(adminBtn);
+    }
+
+    // Mostrar si localStorage ya tiene rol admin
+    if (user.rol === 'admin') insertAdminBtn();
+
+    // Siempre verificar rol real en DB (detecta cambios post-login)
+    if (typeof _supabase !== 'undefined') {
+        _supabase.from('usuarios').select('rol').eq('id', user.id).single()
+            .then(({ data: p }) => {
+                if (!p) return;
+                if (p.rol !== user.rol) {
+                    user.rol = p.rol;
+                    localStorage.setItem('user', JSON.stringify(user));
+                }
+                if (p.rol === 'admin') insertAdminBtn();
+            });
     }
 
     // Logout — sin confirmación, la transición de página es feedback suficiente
