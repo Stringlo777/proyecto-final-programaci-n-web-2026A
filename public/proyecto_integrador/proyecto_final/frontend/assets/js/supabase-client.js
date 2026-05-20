@@ -16,7 +16,14 @@ const nDaysAgo   = n  => new Date(Date.now() - n * 864e5).toISOString().split('T
 // ── Auth ───────────────────────────────────────────────────────────
 async function loginWithSupabase({ email, password }) {
     const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
-    if (error) return { status: 401, data: { message: 'Correo o contraseña incorrectos.' } };
+    if (error) {
+        const msg = error.message?.includes('Email not confirmed')
+            ? 'Correo no confirmado. Contacta al administrador.'
+            : error.message?.includes('Invalid login credentials') || error.message?.includes('invalid_credentials')
+            ? 'Correo o contraseña incorrectos.'
+            : error.message || 'Error al iniciar sesión.';
+        return { status: 401, data: { message: msg } };
+    }
 
     const { data: profileArr } = await _supabase.rpc('get_my_profile');
     const profile = profileArr?.[0];
