@@ -17,12 +17,8 @@ const nDaysAgo   = n  => new Date(Date.now() - n * 864e5).toISOString().split('T
 async function loginWithSupabase({ email, password }) {
     const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
     if (error) {
-        const msg = error.message?.includes('Email not confirmed')
-            ? 'Correo no confirmado. Contacta al administrador.'
-            : error.message?.includes('Invalid login credentials') || error.message?.includes('invalid_credentials')
-            ? 'Correo o contraseña incorrectos.'
-            : error.message || 'Error al iniciar sesión.';
-        return { status: 401, data: { message: msg } };
+        console.error('[Supabase login error]', error);
+        return { status: 401, data: { message: error.message || 'Error al iniciar sesión.' } };
     }
 
     const { data: profileArr } = await _supabase.rpc('get_my_profile');
@@ -225,7 +221,10 @@ const API = {
         try {
             if (endpoint.includes('login'))    return await loginWithSupabase(payload);
             if (endpoint.includes('register')) return await registerWithSupabase(payload);
-        } catch { }
+        } catch (e) {
+            console.error('[API.post error]', e);
+            return { status: 500, data: { message: e?.message || 'Error de conexión con Supabase.' } };
+        }
         return { status: 400, data: { message: 'Endpoint desconocido.' } };
     },
 
@@ -238,7 +237,7 @@ const API = {
             }
             if (endpoint.includes('/usuarios/read'))       return await fetchUsersSupabase();
             return { status: 200, data: {} };
-        } catch { return { status: 500, data: { message: 'Error de red.' } }; }
+        } catch (e) { console.error('[API.getAuth error]', e); return { status: 500, data: { message: e?.message || 'Error de red.' } }; }
     },
 
     postAuth: async (endpoint, method, payload) => {
@@ -249,7 +248,10 @@ const API = {
             if (endpoint.includes('/registros/toggle')) return await toggleRegistroSupabase(payload);
             if (endpoint.includes('/usuarios/read'))    return await fetchUsersSupabase();
             if (endpoint.includes('/usuarios/delete'))  return await deleteUserSupabase(payload);
-        } catch { }
+        } catch (e) {
+            console.error('[API.postAuth error]', e);
+            return { status: 500, data: { message: e?.message || 'Error de conexión.' } };
+        }
         return { status: 400, data: { message: 'Endpoint desconocido.' } };
     }
 };
